@@ -14,6 +14,12 @@
 		37E9B14B284D6A80005D0D2A /* CocoaMBETextDemoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37E9B14A284D6A80005D0D2A /* CocoaMBETextDemoTests.swift */; };
 		37E9B155284D6A80005D0D2A /* CocoaMBETextDemoUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37E9B154284D6A80005D0D2A /* CocoaMBETextDemoUITests.swift */; };
 		37E9B157284D6A80005D0D2A /* CocoaMBETextDemoUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37E9B156284D6A80005D0D2A /* CocoaMBETextDemoUITestsLaunchTests.swift */; };
+		37E9B166284D6AF0005D0D2A /* MBEFontAtlas.m in Sources */ = {isa = PBXBuildFile; fileRef = 37E9B165284D6AF0005D0D2A /* MBEFontAtlas.m */; };
+		37E9B169284D6B07005D0D2A /* MBEMathUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 37E9B168284D6B07005D0D2A /* MBEMathUtilities.m */; };
+		37E9B16C284D6B14005D0D2A /* MBETextMesh.m in Sources */ = {isa = PBXBuildFile; fileRef = 37E9B16B284D6B14005D0D2A /* MBETextMesh.m */; };
+		37E9B16F284D6BD3005D0D2A /* MBEMesh.m in Sources */ = {isa = PBXBuildFile; fileRef = 37E9B16E284D6BD3005D0D2A /* MBEMesh.m */; };
+		37E9B172284D6BF1005D0D2A /* MBEMetalView.m in Sources */ = {isa = PBXBuildFile; fileRef = 37E9B171284D6BF1005D0D2A /* MBEMetalView.m */; };
+		37E9B178284D6CEE005D0D2A /* MBERenderer.m in Sources */ = {isa = PBXBuildFile; fileRef = 37E9B177284D6CEE005D0D2A /* MBERenderer.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -45,6 +51,20 @@
 		37E9B150284D6A80005D0D2A /* CocoaMBETextDemoUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CocoaMBETextDemoUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		37E9B154284D6A80005D0D2A /* CocoaMBETextDemoUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CocoaMBETextDemoUITests.swift; sourceTree = "<group>"; };
 		37E9B156284D6A80005D0D2A /* CocoaMBETextDemoUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CocoaMBETextDemoUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		37E9B163284D6AEF005D0D2A /* CocoaMBETextDemo-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "CocoaMBETextDemo-Bridging-Header.h"; sourceTree = "<group>"; };
+		37E9B164284D6AF0005D0D2A /* MBEFontAtlas.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MBEFontAtlas.h; sourceTree = "<group>"; };
+		37E9B165284D6AF0005D0D2A /* MBEFontAtlas.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MBEFontAtlas.m; sourceTree = "<group>"; };
+		37E9B167284D6B07005D0D2A /* MBEMathUtilities.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MBEMathUtilities.h; sourceTree = "<group>"; };
+		37E9B168284D6B07005D0D2A /* MBEMathUtilities.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MBEMathUtilities.m; sourceTree = "<group>"; };
+		37E9B16A284D6B14005D0D2A /* MBETextMesh.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MBETextMesh.h; sourceTree = "<group>"; };
+		37E9B16B284D6B14005D0D2A /* MBETextMesh.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MBETextMesh.m; sourceTree = "<group>"; };
+		37E9B16D284D6BD3005D0D2A /* MBEMesh.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MBEMesh.h; sourceTree = "<group>"; };
+		37E9B16E284D6BD3005D0D2A /* MBEMesh.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MBEMesh.m; sourceTree = "<group>"; };
+		37E9B170284D6BF1005D0D2A /* MBEMetalView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MBEMetalView.h; sourceTree = "<group>"; };
+		37E9B171284D6BF1005D0D2A /* MBEMetalView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MBEMetalView.m; sourceTree = "<group>"; };
+		37E9B173284D6C4A005D0D2A /* MBETypes.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MBETypes.h; sourceTree = "<group>"; };
+		37E9B176284D6CEE005D0D2A /* MBERenderer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MBERenderer.h; sourceTree = "<group>"; };
+		37E9B177284D6CEE005D0D2A /* MBERenderer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MBERenderer.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,9 +117,23 @@
 			children = (
 				37E9B138284D6A7D005D0D2A /* AppDelegate.swift */,
 				37E9B13A284D6A7D005D0D2A /* ViewController.swift */,
+				37E9B164284D6AF0005D0D2A /* MBEFontAtlas.h */,
+				37E9B165284D6AF0005D0D2A /* MBEFontAtlas.m */,
+				37E9B167284D6B07005D0D2A /* MBEMathUtilities.h */,
+				37E9B168284D6B07005D0D2A /* MBEMathUtilities.m */,
+				37E9B173284D6C4A005D0D2A /* MBETypes.h */,
+				37E9B16A284D6B14005D0D2A /* MBETextMesh.h */,
+				37E9B16B284D6B14005D0D2A /* MBETextMesh.m */,
+				37E9B16D284D6BD3005D0D2A /* MBEMesh.h */,
+				37E9B16E284D6BD3005D0D2A /* MBEMesh.m */,
+				37E9B170284D6BF1005D0D2A /* MBEMetalView.h */,
+				37E9B171284D6BF1005D0D2A /* MBEMetalView.m */,
+				37E9B176284D6CEE005D0D2A /* MBERenderer.h */,
+				37E9B177284D6CEE005D0D2A /* MBERenderer.m */,
 				37E9B13C284D6A7F005D0D2A /* Assets.xcassets */,
 				37E9B13E284D6A7F005D0D2A /* Main.storyboard */,
 				37E9B141284D6A7F005D0D2A /* CocoaMBETextDemo.entitlements */,
+				37E9B163284D6AEF005D0D2A /* CocoaMBETextDemo-Bridging-Header.h */,
 			);
 			path = CocoaMBETextDemo;
 			sourceTree = "<group>";
@@ -189,6 +223,7 @@
 				TargetAttributes = {
 					37E9B134284D6A7D005D0D2A = {
 						CreatedOnToolsVersion = 13.2;
+						LastSwiftMigration = 1320;
 					};
 					37E9B145284D6A80005D0D2A = {
 						CreatedOnToolsVersion = 13.2;
@@ -251,8 +286,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				37E9B166284D6AF0005D0D2A /* MBEFontAtlas.m in Sources */,
+				37E9B172284D6BF1005D0D2A /* MBEMetalView.m in Sources */,
+				37E9B16C284D6B14005D0D2A /* MBETextMesh.m in Sources */,
 				37E9B13B284D6A7D005D0D2A /* ViewController.swift in Sources */,
 				37E9B139284D6A7D005D0D2A /* AppDelegate.swift in Sources */,
+				37E9B169284D6B07005D0D2A /* MBEMathUtilities.m in Sources */,
+				37E9B178284D6CEE005D0D2A /* MBERenderer.m in Sources */,
+				37E9B16F284D6BD3005D0D2A /* MBEMesh.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -420,6 +461,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = CocoaMBETextDemo/CocoaMBETextDemo.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
@@ -438,6 +480,8 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.ngrid.ngrid.CocoaMBETextDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "CocoaMBETextDemo/CocoaMBETextDemo-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
@@ -447,6 +491,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = CocoaMBETextDemo/CocoaMBETextDemo.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
@@ -465,6 +510,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.ngrid.ngrid.CocoaMBETextDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "CocoaMBETextDemo/CocoaMBETextDemo-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 			};
 			name = Release;
