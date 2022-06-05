@@ -7,7 +7,7 @@
 
 import Cocoa
 
-class ViewController: NSViewController {
+class ViewController: MBEViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()

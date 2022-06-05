@@ -19,8 +19,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
-
-
     MTKView* mtkView = (MTKView*)self.view;
     mtkView.delegate = self;
 
