@@ -20,6 +20,8 @@
 		37E9B16F284D6BD3005D0D2A /* MBEMesh.m in Sources */ = {isa = PBXBuildFile; fileRef = 37E9B16E284D6BD3005D0D2A /* MBEMesh.m */; };
 		37E9B172284D6BF1005D0D2A /* MBEMetalView.m in Sources */ = {isa = PBXBuildFile; fileRef = 37E9B171284D6BF1005D0D2A /* MBEMetalView.m */; };
 		37E9B178284D6CEE005D0D2A /* MBERenderer.m in Sources */ = {isa = PBXBuildFile; fileRef = 37E9B177284D6CEE005D0D2A /* MBERenderer.m */; };
+		37E9B17B284D6FA0005D0D2A /* MBEViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 37E9B17A284D6FA0005D0D2A /* MBEViewController.m */; };
+		37E9B17D284D6FCA005D0D2A /* Shaders.metal in Sources */ = {isa = PBXBuildFile; fileRef = 37E9B17C284D6FC9005D0D2A /* Shaders.metal */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -65,6 +67,9 @@
 		37E9B173284D6C4A005D0D2A /* MBETypes.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MBETypes.h; sourceTree = "<group>"; };
 		37E9B176284D6CEE005D0D2A /* MBERenderer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MBERenderer.h; sourceTree = "<group>"; };
 		37E9B177284D6CEE005D0D2A /* MBERenderer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MBERenderer.m; sourceTree = "<group>"; };
+		37E9B179284D6FA0005D0D2A /* MBEViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MBEViewController.h; sourceTree = "<group>"; };
+		37E9B17A284D6FA0005D0D2A /* MBEViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MBEViewController.m; sourceTree = "<group>"; };
+		37E9B17C284D6FC9005D0D2A /* Shaders.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = Shaders.metal; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -128,6 +133,9 @@
 				37E9B16E284D6BD3005D0D2A /* MBEMesh.m */,
 				37E9B170284D6BF1005D0D2A /* MBEMetalView.h */,
 				37E9B171284D6BF1005D0D2A /* MBEMetalView.m */,
+				37E9B179284D6FA0005D0D2A /* MBEViewController.h */,
+				37E9B17A284D6FA0005D0D2A /* MBEViewController.m */,
+				37E9B17C284D6FC9005D0D2A /* Shaders.metal */,
 				37E9B176284D6CEE005D0D2A /* MBERenderer.h */,
 				37E9B177284D6CEE005D0D2A /* MBERenderer.m */,
 				37E9B13C284D6A7F005D0D2A /* Assets.xcassets */,
@@ -289,6 +297,8 @@
 				37E9B166284D6AF0005D0D2A /* MBEFontAtlas.m in Sources */,
 				37E9B172284D6BF1005D0D2A /* MBEMetalView.m in Sources */,
 				37E9B16C284D6B14005D0D2A /* MBETextMesh.m in Sources */,
+				37E9B17B284D6FA0005D0D2A /* MBEViewController.m in Sources */,
+				37E9B17D284D6FCA005D0D2A /* Shaders.metal in Sources */,
 				37E9B13B284D6A7D005D0D2A /* ViewController.swift in Sources */,
 				37E9B139284D6A7D005D0D2A /* AppDelegate.swift in Sources */,
 				37E9B169284D6B07005D0D2A /* MBEMathUtilities.m in Sources */,
