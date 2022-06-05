@@ -1,7 +1,7 @@
 @import Cocoa;
 @import QuartzCore.CAMetalLayer;
 
-@interface MBEMetalView : UIView
+@interface MBEMetalView : NSView
 
 @property (nonatomic, readonly) CAMetalLayer *metalLayer;
 

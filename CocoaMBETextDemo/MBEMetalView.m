@@ -17,12 +17,12 @@
     [super setFrame:frame];
 
     // During the first layout pass, we will not be in a view hierarchy, so we guess our scale
-    CGFloat scale = [UIScreen mainScreen].scale;
+    CGFloat scale = [NSScreen mainScreen].backingScaleFactor;
 
     // If we've moved to a window by the time our frame is being set, we can take its scale as our own
     if (self.window)
     {
-        scale = self.window.screen.scale;
+        scale = self.window.screen.backingScaleFactor;
     }
 
     CGSize drawableSize = self.bounds.size;

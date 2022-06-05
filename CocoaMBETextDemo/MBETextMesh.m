@@ -6,6 +6,73 @@ typedef void (^MBEGlyphPositionEnumerationBlock)(CGGlyph glyph,
                                                  NSInteger glyphIndex,
                                                  CGRect glyphBounds);
 
+
+CGContextRef SDGraphicsGetCurrentContext(void) {
+#if SD_UIKIT || SD_WATCH
+    return UIGraphicsGetCurrentContext();
+#else
+    return NSGraphicsContext.currentContext.CGContext;
+#endif
+}
+
+static void *kNSGraphicsContextScaleFactorKey;
+
+static CGContextRef SDCGContextCreateBitmapContext(CGSize size, BOOL opaque, CGFloat scale) {
+    if (scale == 0) {
+        // Match `UIGraphicsBeginImageContextWithOptions`, reset to the scale factor of the device’s main screen if scale is 0.
+        scale = [NSScreen mainScreen].backingScaleFactor;
+    }
+    size_t width = ceil(size.width * scale);
+    size_t height = ceil(size.height * scale);
+    if (width < 1 || height < 1) return NULL;
+
+    //pre-multiplied BGRA for non-opaque, BGRX for opaque, 8-bits per component, as Apple's doc
+    CGColorSpaceRef space = CGColorSpaceCreateDeviceRGB();
+    CGImageAlphaInfo alphaInfo = kCGBitmapByteOrder32Host | (opaque ? kCGImageAlphaNoneSkipFirst : kCGImageAlphaPremultipliedFirst);
+    CGContextRef context = CGBitmapContextCreate(NULL, width, height, 8, 0, space, kCGBitmapByteOrderDefault | alphaInfo);
+    CGColorSpaceRelease(space);
+    if (!context) {
+        return NULL;
+    }
+    CGContextScaleCTM(context, scale, scale);
+
+    return context;
+}
+
+@import ObjectiveC.runtime;
+
+void SDGraphicsBeginImageContextWithOptions(CGSize size, BOOL opaque, CGFloat scale) {
+#if SD_UIKIT || SD_WATCH
+    UIGraphicsBeginImageContextWithOptions(size, opaque, scale);
+#else
+    CGContextRef context = SDCGContextCreateBitmapContext(size, opaque, scale);
+    if (!context) {
+        return;
+    }
+    NSGraphicsContext *graphicsContext = [NSGraphicsContext graphicsContextWithCGContext:context flipped:NO];
+    objc_setAssociatedObject(graphicsContext, &kNSGraphicsContextScaleFactorKey, @(scale), OBJC_ASSOCIATION_RETAIN);
+    CGContextRelease(context);
+    [NSGraphicsContext saveGraphicsState];
+    NSGraphicsContext.currentContext = graphicsContext;
+#endif
+}
+
+void SDGraphicsEndImageContext(void) {
+#if SD_UIKIT || SD_WATCH
+    UIGraphicsEndImageContext();
+#else
+    [NSGraphicsContext restoreGraphicsState];
+#endif
+}
+
+void SDGraphicsBeginImageContext(CGSize size) {
+#if SD_UIKIT || SD_WATCH
+    UIGraphicsBeginImageContext(size);
+#else
+    SDGraphicsBeginImageContextWithOptions(size, NO, 1.0);
+#endif
+}
+
 @implementation MBETextMesh
 
 @synthesize vertexBuffer=_vertexBuffer;
@@ -111,8 +178,8 @@ typedef void (^MBEGlyphPositionEnumerationBlock)(CGGlyph glyph,
 
     __block CFIndex glyphIndexInFrame = 0;
 
-    UIGraphicsBeginImageContext(CGSizeMake(1, 1));
-    CGContextRef context = UIGraphicsGetCurrentContext();
+    SDGraphicsBeginImageContext(CGSizeMake(1, 1));
+    CGContextRef context = SDGraphicsGetCurrentContext();
 
     [lines enumerateObjectsUsingBlock:^(id lineObject, NSUInteger lineIndex, BOOL *stop) {
         CTLineRef line = (__bridge CTLineRef)lineObject;
@@ -149,7 +216,7 @@ typedef void (^MBEGlyphPositionEnumerationBlock)(CGGlyph glyph,
         }];
     }];
 
-    UIGraphicsEndImageContext();
+    SDGraphicsEndImageContext();
 }
 
 @end

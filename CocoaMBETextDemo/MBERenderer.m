@@ -152,7 +152,7 @@ static float MBEFontAtlasSize = 2048;
 
 - (void)buildTextMesh
 {
-    CGRect textRect = CGRectInset([UIScreen mainScreen].nativeBounds, 10, 10);
+    CGRect textRect = CGRectInset([NSScreen mainScreen].visibleFrame, 10, 10);
 
     _textMesh = [[MBETextMesh alloc] initWithString:MBESampleText
                                              inRect:textRect

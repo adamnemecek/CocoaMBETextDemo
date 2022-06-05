@@ -1,7 +1,7 @@
 #import "MBEFontAtlas.h"
 @import CoreText;
 
-#define MBE_GENERATE_DEBUG_ATLAS_IMAGE 1
+#define MBE_GENERATE_DEBUG_ATLAS_IMAGE 0
 
 // This is the size at which the font atlas will be generated, ideally a large power of two. Even though
 // we later downscale the distance field, it's better to render it at as high a resolution as possible in
