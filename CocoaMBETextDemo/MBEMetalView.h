@@ -1,4 +1,4 @@
-@import UIKit;
+@import Cocoa;
 @import QuartzCore.CAMetalLayer;
 
 @interface MBEMetalView : UIView

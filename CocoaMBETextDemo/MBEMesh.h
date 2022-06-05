@@ -1,4 +1,3 @@
-@import UIKit;
 @import Metal;
 
 @interface MBEMesh : NSObject

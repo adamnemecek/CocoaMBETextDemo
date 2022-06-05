@@ -30,7 +30,7 @@ typedef void (^MBEGlyphPositionEnumerationBlock)(CGGlyph glyph,
                      atSize:(CGFloat)fontSize
                      device:(id<MTLDevice>)device
 {
-    UIFont *font = [fontAtlas.parentFont fontWithSize:fontSize];
+    NSFont *font = [fontAtlas.parentFont fontWithSize:fontSize];
     NSDictionary *attributes = @{ NSFontAttributeName : font };
     NSAttributedString *attrString = [[NSAttributedString alloc] initWithString:string attributes:attributes];
     CFRange stringRange = CFRangeMake(0, attrString.length);

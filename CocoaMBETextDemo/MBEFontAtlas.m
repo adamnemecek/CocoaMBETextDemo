@@ -55,7 +55,7 @@ static NSString *const MBEGlyphDescriptorsKey = @"glyphDescriptors";
 
 @implementation MBEFontAtlas
 
-- (instancetype)initWithFont:(UIFont *)font textureSize:(NSInteger)textureSize
+- (instancetype)initWithFont:(NSFont *)font textureSize:(NSInteger)textureSize
 {
     if ((self = [super init]))
     {
@@ -84,7 +84,7 @@ static NSString *const MBEGlyphDescriptorsKey = @"glyphDescriptors";
             return nil;
         }
 
-        _parentFont = [UIFont fontWithName:fontName size:fontSize];
+        _parentFont = [NSFont fontWithName:fontName size:fontSize];
         _fontPointSize = fontSize;
         _spread = spread;
         _glyphDescriptors = [aDecoder decodeObjectForKey:MBEGlyphDescriptorsKey];
@@ -133,7 +133,7 @@ static NSString *const MBEGlyphDescriptorsKey = @"glyphDescriptors";
     return YES;
 }
 
-- (CGSize)estimatedGlyphSizeForFont:(UIFont *)font
+- (CGSize)estimatedGlyphSizeForFont:(NSFont *)font
 {
     NSString *exemplarString = @"{ǺOJMQYZa@jmqyw";
     CGSize exemplarStringSize = [exemplarString sizeWithAttributes:@{ NSFontAttributeName : font }];
@@ -143,16 +143,16 @@ static NSString *const MBEGlyphDescriptorsKey = @"glyphDescriptors";
     return CGSizeMake(averageGlyphWidth, maxGlyphHeight);
 }
 
-- (CGFloat)estimatedLineWidthForFont:(UIFont *)font
+- (CGFloat)estimatedLineWidthForFont:(NSFont *)font
 {
     CGFloat estimatedStrokeWidth = [@"!" sizeWithAttributes:@{ NSFontAttributeName : font }].width;
     return ceilf(estimatedStrokeWidth);
 }
 
-- (BOOL)font:(UIFont *)font atSize:(CGFloat)size isLikelyToFitInAtlasRect:(CGRect)rect
+- (BOOL)font:(NSFont *)font atSize:(CGFloat)size isLikelyToFitInAtlasRect:(CGRect)rect
 {
     const float textureArea = rect.size.width * rect.size.height;
-    UIFont *trialFont = [UIFont fontWithName:font.fontName size:size];
+    NSFont *trialFont = [NSFont fontWithName:font.fontName size:size];
     CTFontRef trialCTFont = CTFontCreateWithName((__bridge CFStringRef)font.fontName, size, NULL);
     CFIndex fontGlyphCount = CTFontGetGlyphCount(trialCTFont);
     CGFloat glyphMargin = [self estimatedLineWidthForFont:trialFont];
@@ -163,7 +163,7 @@ static NSString *const MBEGlyphDescriptorsKey = @"glyphDescriptors";
     return fits;
 }
 
-- (CGFloat)pointSizeThatFitsForFont:(UIFont *)font inAtlasRect:(CGRect)rect
+- (CGFloat)pointSizeThatFitsForFont:(NSFont *)font inAtlasRect:(CGRect)rect
 {
     CGFloat fittedSize = font.pointSize;
 
@@ -176,7 +176,7 @@ static NSString *const MBEGlyphDescriptorsKey = @"glyphDescriptors";
     return fittedSize;
 }
 
-- (uint8_t *)createAtlasForFont:(UIFont *)font width:(NSInteger)width height:(NSInteger)height
+- (uint8_t *)createAtlasForFont:(NSFont *)font width:(NSInteger)width height:(NSInteger)height
 {
     uint8_t *imageData = malloc(width * height);
 
@@ -204,7 +204,7 @@ static NSString *const MBEGlyphDescriptorsKey = @"glyphDescriptors";
 
     _fontPointSize = [self pointSizeThatFitsForFont:font inAtlasRect:CGRectMake(0, 0, width, height)];
     CTFontRef ctFont = CTFontCreateWithName((__bridge CFStringRef)font.fontName, _fontPointSize, NULL);
-    _parentFont = [UIFont fontWithName:font.fontName size:_fontPointSize];
+    _parentFont = [NSFont fontWithName:font.fontName size:_fontPointSize];
 
     CFIndex fontGlyphCount = CTFontGetGlyphCount(ctFont);
 

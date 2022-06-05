@@ -134,7 +134,7 @@ static float MBEFontAtlasSize = 2048;
     // Cache miss: if we don't have a serialized version of the font atlas, build it now
     if (!_fontAtlas)
     {
-        UIFont *font = [UIFont fontWithName:MBEFontName size:32];
+        NSFont *font = [NSFont fontWithName:MBEFontName size:32];
         _fontAtlas = [[MBEFontAtlas alloc] initWithFont:font textureSize:MBEFontAtlasSize];
         [NSKeyedArchiver archiveRootObject:_fontAtlas toFile:fontURL.path];
     }
