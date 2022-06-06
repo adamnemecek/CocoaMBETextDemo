@@ -24,8 +24,12 @@ vertex TransformedVertex vertex_shade(constant Vertex *vertices [[buffer(0)]],
                                       constant Uniforms &uniforms [[buffer(1)]],
                                       uint vid [[vertex_id]])
 {
+    float4 pos = vertices[vid].position;
+
     TransformedVertex outVert;
-    outVert.position = uniforms.viewProjectionMatrix * uniforms.modelMatrix * float4(vertices[vid].position);
+    outVert.position = uniforms.viewProjectionMatrix *
+    uniforms.modelMatrix * pos;
+//    + float4(16.0, -7.0, 0.0, 0.0);
     outVert.texCoords = vertices[vid].texCoords;
     return outVert;
 }
@@ -45,4 +49,5 @@ fragment half4 fragment_shade(TransformedVertex vert [[stage_in]],
     // Smooth the glyph edge by interpolating across the boundary in a band with the width determined above
     float insideness = smoothstep(edgeDistance - edgeWidth, edgeDistance + edgeWidth, sampleDistance);
     return half4(color.r, color.g, color.b, insideness);
+//    return half4(0.0, 0.0, 0.0, 1.0);
 }

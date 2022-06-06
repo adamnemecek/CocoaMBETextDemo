@@ -5,14 +5,37 @@
 #import "MBEFontAtlas.h"
 #import "MBETextMesh.h"
 
-#define MBE_FORCE_REGENERATE_FONT_ATLAS 0
+#define MBE_FORCE_REGENERATE_FONT_ATLAS 1
+
+
+//let deviceDescription = NSScreen.main?.deviceDescription
+//let screenSize = deviceDescription![.size]
+//let screenHeight = (screenSize as! NSSize).height
+//var nativeBounds: CGRect { get }
+@interface NSScreen(Ext)
+@property (readonly) CGRect nativeBounds;
+@end
+
+@implementation NSScreen(Ext)
+
+-(CGRect)nativeBounds {
+    CGSize size = self.visibleFrame.size;
+    return CGRectMake(0.0, 0.0, size.width, size.height);
+//    NSLog(@"frame %@", NSStringFromRect(frame));
+//    self.deviceDescription[NSNScreenDesci]
+//    return CGRectZero;
+}
+
+@end
 
 static NSString *const MBEFontName = @"HoeflerText-Regular";
 static float MBEFontDisplaySize = 72;
-static NSString *const MBESampleText = @"It was the best of times, it was the worst of times, "
-                                        "it was the age of wisdom, it was the age of foolishness...\n\n"
-                                        "Все счастливые семьи похожи друг на друга, "
-                                        "каждая несчастливая семья несчастлива по-своему.";
+//static NSString *const MBESampleText = @"It was the best of times, it was the worst of times, "
+//                                        "it was the age of wisdom, it was the age of foolishness...\n\n"
+//                                        "Все счастливые семьи похожи друг на друга, "
+//                                        "каждая несчастливая семья несчастлива по-своему.";
+static NSString *const MBESampleText = @"A";
+
 static vector_float4 MBETextColor = { 0.1, 0.1, 0.1, 1 };
 static MTLClearColor MBEClearColor = { 1, 1, 1, 1 };
 static float MBEFontAtlasSize = 2048;
@@ -134,9 +157,10 @@ static float MBEFontAtlasSize = 2048;
     // Cache miss: if we don't have a serialized version of the font atlas, build it now
     if (!_fontAtlas)
     {
-        NSFont *font = [NSFont fontWithName:MBEFontName size:32];
+//        NSFont *font = [NSFont fontWithName:MBEFontName size:32];
+        NSFont *font = [NSFont systemFontOfSize:32];
         _fontAtlas = [[MBEFontAtlas alloc] initWithFont:font textureSize:MBEFontAtlasSize];
-        [NSKeyedArchiver archiveRootObject:_fontAtlas toFile:fontURL.path];
+//        [NSKeyedArchiver archiveRootObject:_fontAtlas toFile:fontURL.path];
     }
 
     MTLTextureDescriptor *textureDesc = [MTLTextureDescriptor texture2DDescriptorWithPixelFormat:MTLPixelFormatR8Unorm
@@ -152,8 +176,11 @@ static float MBEFontAtlasSize = 2048;
 
 - (void)buildTextMesh
 {
-    CGRect textRect = CGRectInset([NSScreen mainScreen].visibleFrame, 10, 10);
+    CGRect frame = NSScreen.mainScreen.nativeBounds;
+    NSLog(@"frame %@", NSStringFromRect(frame));
+    CGRect textRect = CGRectInset(frame, 10, 10);
 
+    NSLog(@"textRect %@", NSStringFromRect(textRect));
     _textMesh = [[MBETextMesh alloc] initWithString:MBESampleText
                                              inRect:textRect
                                       withFontAtlas:_fontAtlas
@@ -171,10 +198,13 @@ static float MBEFontAtlasSize = 2048;
 - (void)buildDepthTexture
 {
     CGSize drawableSize = self.layer.drawableSize;
-    MTLTextureDescriptor *descriptor = [MTLTextureDescriptor texture2DDescriptorWithPixelFormat:MTLPixelFormatDepth32Float
-                                                                                          width:drawableSize.width
-                                                                                         height:drawableSize.height
-                                                                                      mipmapped:NO];
+    MTLTextureDescriptor *descriptor =
+    [MTLTextureDescriptor texture2DDescriptorWithPixelFormat:MTLPixelFormatDepth32Float
+                                                       width:drawableSize.width
+                                                      height:drawableSize.height
+                                                   mipmapped:NO
+    ];
+
     descriptor.usage = MTLTextureUsageRenderTarget;
     descriptor.storageMode = MTLStorageModePrivate;
     self.depthTexture = [self.device newTextureWithDescriptor:descriptor];
